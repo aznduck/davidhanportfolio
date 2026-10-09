@@ -1,11 +1,14 @@
 // Lightweight stand-in for particles.js, tuned to feel like v1's config: drifting dots joined by
-// faint lines when close. Pauses off-screen and renders one still frame under reduced motion.
+// faint lines when close, pushed away from the cursor. Pauses off-screen and renders one still
+// frame under reduced motion.
 import { useEffect, useRef } from 'react'
 
 type Dot = { x: number; y: number; vx: number; vy: number; r: number }
 
 const LINK_DISTANCE = 130
 const SPEED = 0.25
+const REPULSE_RADIUS = 110
+const REPULSE_STRENGTH = 3
 
 export default function Particles({ color }: { color: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -23,6 +26,9 @@ export default function Particles({ color }: { color: string }) {
     let height = 0
     let frame = 0
     let visible = true
+    // The canvas sits under the hero content with pointer-events off, so track the pointer on the
+    // window and convert to canvas coordinates.
+    const mouse = { x: -9999, y: -9999 }
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -71,6 +77,14 @@ export default function Particles({ color }: { color: string }) {
       for (const d of dots) {
         d.x += d.vx
         d.y += d.vy
+        const dx = d.x - mouse.x
+        const dy = d.y - mouse.y
+        const dist = Math.hypot(dx, dy)
+        if (dist > 0 && dist < REPULSE_RADIUS) {
+          const push = (1 - dist / REPULSE_RADIUS) * REPULSE_STRENGTH
+          d.x += (dx / dist) * push
+          d.y += (dy / dist) * push
+        }
         if (d.x < -10) d.x = width + 10
         if (d.x > width + 10) d.x = -10
         if (d.y < -10) d.y = height + 10
@@ -97,13 +111,26 @@ export default function Particles({ color }: { color: string }) {
       resize()
       start()
     }
+    const onPointerMove = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return
+      const rect = canvas.getBoundingClientRect()
+      mouse.x = e.clientX - rect.left
+      mouse.y = e.clientY - rect.top
+    }
+    const onPointerLeave = () => {
+      mouse.x = mouse.y = -9999
+    }
     window.addEventListener('resize', onResize)
+    window.addEventListener('pointermove', onPointerMove)
+    document.addEventListener('pointerleave', onPointerLeave)
     onResize()
 
     return () => {
       cancelAnimationFrame(frame)
       observer.disconnect()
       window.removeEventListener('resize', onResize)
+      window.removeEventListener('pointermove', onPointerMove)
+      document.removeEventListener('pointerleave', onPointerLeave)
     }
   }, [])
 
