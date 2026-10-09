@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #181818;
+  --color-accent: #f0c417;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  @apply bg-bg text-neutral-200 font-sans antialiased;
+}
