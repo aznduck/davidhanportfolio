@@ -1,11 +1,54 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 @import 'tailwindcss';
 
 @theme {
-  --color-bg: #181818;
+  --color-bg: #0b0b0c;
+  --color-surface: #141416;
+  --color-line: #232326;
+  --color-fg: #ededed;
+  --color-muted: #9a9aa0;
+  --color-faint: #66666c;
   --color-accent: #f0c417;
-  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  @apply bg-bg text-neutral-200 font-sans antialiased;
+  @apply bg-bg text-fg font-sans antialiased;
+}
+
+::selection {
+  @apply bg-accent text-bg;
+}
+
+@keyframes waddle {
+  0% { transform: translateX(-80px) rotate(-6deg); }
+  10% { transform: translateX(calc(10vw - 80px)) rotate(6deg); }
+  20% { transform: translateX(calc(20vw - 80px)) rotate(-6deg); }
+  30% { transform: translateX(calc(30vw - 80px)) rotate(6deg); }
+  40% { transform: translateX(calc(40vw - 80px)) rotate(-6deg); }
+  50% { transform: translateX(calc(50vw - 80px)) rotate(6deg); }
+  60% { transform: translateX(calc(60vw - 80px)) rotate(-6deg); }
+  70% { transform: translateX(calc(70vw - 80px)) rotate(6deg); }
+  80% { transform: translateX(calc(80vw - 80px)) rotate(-6deg); }
+  90% { transform: translateX(calc(90vw - 80px)) rotate(6deg); }
+  100% { transform: translateX(calc(100vw + 80px)) rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

@@ -52,13 +52,15 @@ export const profile = {
   location: 'Los Angeles, CA',
   email: 'dhan6663@usc.edu',
   headline: 'Computer Science @ USC',
+  tagline: 'CS @ USC · prev. Bloomberg, Activision Blizzard',
   intro:
-    "I'm a Computer Science student at USC who likes building things people actually use. " +
-    "I've shipped software at Bloomberg, Activision Blizzard, and Alarm.com, and founded a restaurant-tech startup along the way.",
-  sidequests: 'Other sidequests include making music 🎵, competing in racket sports 🎾, and bringing ideas to life 💡',
+    "I'm a Computer Science student at USC who likes building things people actually use, " +
+    'from anti-cheat dashboards for Call of Duty to inventory systems for ice cream shops.',
+  sidequests: 'Outside of code I make music 🎵, compete in racket sports 🎾, and make videos 🎞️.',
   headshot: '/images/headshot.jpg',
   duck: '/images/duck.png',
   resume: '/resume.pdf',
+  v1: 'https://aznduck.github.io',
   socials: [
     { label: 'GitHub', href: 'https://github.com/aznduck' },
     { label: 'LinkedIn', href: 'https://linkedin.com/in/davidhanusc' },
@@ -68,9 +70,9 @@ export const profile = {
 }
 
 export const theme = {
-  background: '#181818',
+  background: '#0b0b0c',
   accent: '#f0c417',
-  font: 'Poppins',
+  font: 'Geist',
 }
 
 export const education = {
