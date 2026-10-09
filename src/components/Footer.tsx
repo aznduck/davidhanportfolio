@@ -18,9 +18,14 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <a href={profile.v1} target="_blank" rel="noreferrer" className="hover:text-accent">
-            v1 →
-          </a>
+          <div className="flex gap-4">
+            <a href="/llms.txt" className="hover:text-accent">
+              for agents: llms.txt
+            </a>
+            <a href={profile.v1} target="_blank" rel="noreferrer" className="hover:text-accent">
+              v1 →
+            </a>
+          </div>
         </div>
       </div>
     </footer>
