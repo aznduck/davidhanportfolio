@@ -182,7 +182,7 @@ export const projects: Project[] = [
       'FastAPI backend with LangChain ReAct agents, WebSocket live status updates, and orchestrated CI/CD',
     ],
     tags: ['Python', 'Next.js', 'FastAPI', 'LangChain'],
-    links: [],
+    links: [{ label: 'GitHub', href: 'https://github.com/aznduck/TrojanHacks_MITHackNation' }],
   },
   {
     name: 'Glance',
@@ -207,11 +207,19 @@ export const projects: Project[] = [
       'Extensive unit and integration tests with Cucumber and JUnit',
     ],
     tags: ['React', 'Java', 'Spring Boot', 'Cucumber'],
-    links: [],
+    links: [{ label: 'GitHub', href: 'https://github.com/aznduck/letsgetlyrical' }],
   },
 ]
 
 export const involvement: Involvement[] = [
+  {
+    name: 'Sigma Eta Pi',
+    role: 'Member',
+    start: 'January 2025',
+    end: 'Present',
+    summary: "Building a startup at USC's premier entrepreneurship organization.",
+    href: 'https://uscsep.com/',
+  },
   {
     name: 'LavaLab',
     role: 'Developer, F24 Cohort',
@@ -257,7 +265,7 @@ export const personal: PersonalSection[] = [
     emoji: '🎵',
     body: [
       "I've played piano since I was 5. I started out in nursing homes and school concerts, then moved into content creation.",
-      'My TikTok @aznduck.piano has grown to 2.5k+ followers and 500k+ likes.',
+      'My TikTok @aznduck.piano has grown to 3k+ followers and 1M+ likes.',
     ],
     media: [
       {
